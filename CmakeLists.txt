@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.5)
+
+project(UniSlicer VERSION 0.1 LANGUAGES CXX)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+find_package(Qt5 REQUIRED COMPONENTS Widgets Core)
+file(COPY stl_template DESTINATION ${PROJECT_BINARY_DIR})
+
+include_directories(include)
+
+set(SOURCE_FILES
+	main.cpp
+	source/Loader.cpp
+	source/structures.cpp)
+
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+
+target_link_libraries(${PROJECT_NAME}
+	PRIVATE Qt5::Widgets
+)
